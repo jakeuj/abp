@@ -516,6 +516,7 @@ namespace MyProject.Test
         public Task<IRemoteStreamContent> Download(Guid id)
         {
             var fs = new FileStream("C:\\Temp\\" + id + ".blob", FileMode.OpenOrCreate);
+            fs.Position = 0;
             return Task.FromResult(
                 (IRemoteStreamContent) new RemoteStreamContent(fs) {
                     ContentType = "application/octet-stream" 
